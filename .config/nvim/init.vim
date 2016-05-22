@@ -9,6 +9,7 @@ call dein#begin(expand('~/.cache/dein'))
 
 call dein#add('neomake/neomake')
 call dein#add('altercation/vim-colors-solarized')
+call dein#add('scrooloose/nerdtree')
 
 call dein#end()
 
@@ -24,3 +25,6 @@ colorscheme solarized
 
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
+
+map <C-f> :NERDTreeToggle %<CR>
+map <F33> :!make<CR>
