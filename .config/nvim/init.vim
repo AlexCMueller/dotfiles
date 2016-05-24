@@ -28,3 +28,6 @@ highlight NonText ctermbg=none
 
 map <C-f> :NERDTreeToggle %<CR>
 map <F33> :!make<CR>
+
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"

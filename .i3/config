@@ -40,7 +40,7 @@ set $right semicolon
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod1+Return exec terminator
+bindsym Mod1+Return exec urxvt 
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -111,11 +111,12 @@ bindsym Mod1+minus scratchpad show
 
 set $ws1 "1: "
 set $ws2 "2: "
+set $ws3 "3: "
 
 # switch to workspace
 bindsym Mod1+1 workspace $ws1
 bindsym Mod1+2 workspace $ws2
-bindsym Mod1+3 workspace 3
+bindsym Mod1+3 workspace $ws3
 bindsym Mod1+4 workspace 4
 bindsym Mod1+5 workspace 5
 bindsym Mod1+6 workspace 6
@@ -127,7 +128,7 @@ bindsym Mod1+0 workspace 10
 # move focused container to workspace
 bindsym Mod1+Shift+1 move container to workspace $ws1
 bindsym Mod1+Shift+2 move container to workspace $ws2
-bindsym Mod1+Shift+3 move container to workspace 3
+bindsym Mod1+Shift+3 move container to workspace $ws3
 bindsym Mod1+Shift+4 move container to workspace 4
 bindsym Mod1+Shift+5 move container to workspace 5
 bindsym Mod1+Shift+6 move container to workspace 6
@@ -137,7 +138,7 @@ bindsym Mod1+Shift+9 move container to workspace 9
 bindsym Mod1+Shift+0 move container to workspace 10
 
 # assign programs to certain workspace
-assign [class="Terminator"] $ws1
+assign [class="URxvt"] $ws1
 assign [class="Firefox"] $ws2
 
 # reload the configuration file
@@ -172,7 +173,7 @@ mode "resize" {
 }
 
 bindsym Mod1+r mode "resize"
-exec_always compton
+exec compton -bfc -I 0.068 -O 0.07 --paint-on-overlay --backend glx  
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ #increase sound volume
@@ -198,7 +199,7 @@ exec xautolock -time 15 -locker '~/.lock/lock.sh' &
 
 # Desktop wallpaper
 exec_always feh --bg-scale ~/.desktopbg/grey.png
-exec xrandr --output LVDS-1 --off --output VGA-1 --auto
+exec xrandr --output LVDS1 --off --output VGA1 --auto
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -210,7 +211,8 @@ bar {
 		statusline #d3dae3
 		# <colorclass>      <border> <background> <text>
 		focused_workspace   #2b2e39  #666a74      #d3dae3
-		inactive_workspace  #2b2e39  #404552      #d3dae3 # 404552
+		inactive_workspace  #2b2e39  #404552      #d3dae3
+		urgent_workspace    #2b2e39  #5294e2      #d3dae3
 	}
 }
 
